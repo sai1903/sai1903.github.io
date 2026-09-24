@@ -1,0 +1,354 @@
+/* ------------------------------------------------------------------
+   card.css — the digital visiting card. Standalone page, phone first.
+   Loads on top of base.css for tokens, fonts and the dark palette.
+   ------------------------------------------------------------------ */
+
+body {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 4vw, 40px);
+  background:
+    radial-gradient(760px 420px at 12% -8%, var(--brand-wash), transparent 68%),
+    radial-gradient(640px 400px at 92% 108%, var(--indigo-wash), transparent 68%),
+    var(--bg);
+}
+
+.sheet { width: 100%; max-width: 420px; }
+
+/* =============== the card ======================================= */
+
+.vcard {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: rise .7s var(--ease) both;
+}
+
+/* photo cover: the portrait sits on the brand gradient, head above the fold */
+.vcard__cover {
+  position: relative;
+  height: 214px;
+  overflow: hidden;
+  background:
+    radial-gradient(150px 120px at 50% 96%, rgba(0,0,0,.22), transparent 70%),
+    linear-gradient(115deg, var(--brand), var(--plum) 46%, var(--indigo) 78%, var(--ocean));
+  background-size: auto, 220% 100%;
+  animation: pan 16s ease-in-out infinite;
+}
+.vcard__cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: .5;
+}
+
+/* Scaled up and top-anchored so the frame crops at the chest rather than
+   slicing the torso, with a little headroom above the hair. */
+.vcard__photo {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  /* the subject sits right of centre in the source cut-out, so bias the
+     offset to centre the head rather than the image's bounding box */
+  transform: translateX(calc(-50% - 18px));
+  height: 356px;
+  width: auto;
+  max-width: none;
+  z-index: 1;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.3));
+}
+
+/* Commbricks lockup — kept on a light chip so the mark stays its own colour */
+.vcard__brand {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px 6px 8px;
+  border-radius: 100px;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px -4px rgba(0,0,0,.35);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #14161a;
+}
+.vcard__brand img { width: 18px; height: 18px; flex: none; }
+
+/* a soft, blurred wash of the same photo behind the whole page */
+.bg {
+  position: fixed;
+  inset: -10%;
+  z-index: -1;
+  background: url("../6vgicdie_surya-professional.png") center 22% / cover no-repeat;
+  filter: blur(54px) saturate(115%);
+  opacity: .2;
+  pointer-events: none;
+}
+:root[data-theme="dark"] .bg { opacity: .16; }
+
+.vcard__head {
+  padding: 18px 22px 20px;
+  position: relative;
+  text-align: center;
+}
+
+
+.vcard__name {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+}
+.vcard__role {
+  font-size: .9rem;
+  color: var(--ink-2);
+  margin-top: 6px;
+  font-weight: 500;
+}
+.vcard__meta {
+  font-family: var(--mono);
+  font-size: .64rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-top: 10px;
+}
+.vcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* =============== quick actions ================================== */
+
+.acts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-block: 1px solid var(--line);
+}
+.act {
+  --c: var(--brand);
+  background: var(--surface);
+  padding: 16px 6px 14px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: background .18s, color .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.act:nth-child(2) { --c: var(--pine); }
+.act:nth-child(3) { --c: var(--ocean); }
+.act:nth-child(4) { --c: var(--indigo); }
+.act:hover, .act:active { background: color-mix(in srgb, var(--c) 9%, var(--surface)); color: var(--ink); }
+.act svg { width: 21px; height: 21px; color: var(--c); transition: transform .22s var(--ease-back); }
+.act:hover svg { transform: translateY(-2px) scale(1.1); }
+
+/* =============== primary buttons ================================ */
+
+.vcard__do { padding: 20px 22px; display: grid; gap: 10px; }
+
+.big {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: .95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .16s var(--ease), box-shadow .2s, opacity .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.big:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.big:active { transform: translateY(0) scale(.99); }
+.big svg { width: 18px; height: 18px; }
+
+.big--brand {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  box-shadow: var(--shadow-brand);
+}
+.big--ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.big--ghost:hover { border-color: var(--ink); }
+
+.big.is-done { background: var(--pine); border-color: var(--pine); color: #fff; }
+
+/* =============== QR ============================================= */
+
+.qr {
+  border-top: 1px solid var(--line);
+  padding: 22px;
+  text-align: center;
+  background: var(--bg-sunk);
+}
+.qr__box {
+  width: 168px;
+  height: 168px;
+  margin: 0 auto 14px;
+  padding: 11px;
+  background: #fff;                 /* scanners want a light quiet zone */
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.qr__box svg, .qr__box img { width: 100%; height: 100%; display: block; }
+.qr__cap {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.qr__url {
+  display: block;
+  font-family: var(--mono);
+  font-size: .66rem;
+  color: var(--muted);
+  margin-top: 7px;
+  word-break: break-all;
+  text-decoration: none;
+}
+.qr__url:hover { color: var(--brand); }
+
+/* =============== footer of the sheet ============================ */
+
+.sheet__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-size: .78rem;
+  color: var(--muted);
+}
+.sheet__foot a { text-decoration: none; }
+.sheet__foot a:hover { color: var(--brand); }
+
+.mini-toggle {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 9px;
+  cursor: pointer;
+  color: var(--ink-2);
+  flex: none;
+}
+.mini-toggle svg { width: 15px; height: 15px; }
+:root[data-theme="dark"] .mini-toggle .i-sun,
+:root:not([data-theme="dark"]) .mini-toggle .i-moon { display: none; }
+
+/* a small confirmation that replaces alert() */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 14px);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 11px 18px;
+  border-radius: 100px;
+  font-size: .84rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s, transform .22s var(--ease);
+  z-index: 50;
+}
+.toast.is-up { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 360px) {
+  .acts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============== cover effects: rings + tech icons =============== */
+
+.cover-fx { position: absolute; inset: 0; }
+
+/* dashed rings behind the figure — data moving around the subject */
+.cover-fx__rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.ring {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+}
+.ring--1 { stroke-width: 1.2; stroke-dasharray: 3 10; opacity: .5;  animation: ringflow 9s linear infinite; }
+.ring--2 { stroke-width: 1;   stroke-dasharray: 2 14; opacity: .36; animation: ringflow 14s linear infinite reverse; }
+.ring--3 { stroke-width: 1;   stroke-dasharray: 1 8;  opacity: .3;  animation: ringflow 18s linear infinite; }
+@keyframes ringflow { to { stroke-dashoffset: -260; } }
+
+/* frosted chips so the icons read on any part of the gradient */
+.fx {
+  position: absolute;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: #fff;
+  background: rgba(255, 255, 255, .17);
+  border: 1px solid rgba(255, 255, 255, .34);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 5px 14px -6px rgba(0, 0, 0, .45);
+  animation: floaty 7s ease-in-out infinite;
+}
+.fx svg { width: 18px; height: 18px; }
+
+/* staggered down the right, clear of the shoulder; one on the left
+   sits above where the arm widens */
+.fx--1 { right: 16px; top: 54px;  }
+.fx--2 { right: 32px; top: 108px; animation-delay: -1.8s; }
+.fx--3 { right: 18px; top: 162px; animation-delay: -3.4s; }
+.fx--4 { left: 16px;  top: 100px; animation-delay: -5.1s; }
+
+@media (max-width: 360px) {
+  .fx--3 { display: none; }
+}
+
+/* --- mobile touch targets --------------------------------------- */
+@media (max-width: 860px) {
+  .mini-toggle { width: 40px; height: 40px; }
+  .qr__url { display: inline-flex; align-items: center; min-height: 40px; padding: 4px 0; }
+  .sheet__foot a { display: inline-flex; align-items: center; min-height: 40px; }
+}

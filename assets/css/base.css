@@ -1,0 +1,262 @@
+/* ------------------------------------------------------------------
+   base.css — tokens, reset, typography
+   Palette is pulled off the Commbricks mark: terracotta #c0452a.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* --- surfaces (warm, slightly clay-tinted paper) --- */
+  --bg:        #fcf9f5;
+  --bg-sunk:   #f5efe6;
+  --bg-deep:   #efe6da;
+  --surface:   #ffffff;
+
+  --ink:       #14161a;
+  --ink-2:     #43474e;
+  --muted:     #6c7077;
+  --faint:     #9aa0a8;
+  --line:      #e6ded2;
+  --line-soft: #f0e9df;
+
+  /* --- brand, straight off the logo --- */
+  --brand:      #c0452a;
+  --brand-deep: #93301b;
+  --brand-lift: #e0724f;
+  --brand-wash: #fbeee9;
+
+  /* --- the wider palette: one hue per product / idea --- */
+  --ocean:      #0f7b8a;   /* Mail       */
+  --ocean-wash: #e4f2f4;
+  --indigo:     #4a44c4;   /* Admin      */
+  --indigo-wash:#ecebfa;
+  --gold:       #b5822a;   /* People/HR  */
+  --gold-wash:  #faf0dd;
+  --pine:       #2f7d5f;   /* success    */
+  --pine-wash:  #e6f2ec;
+  --plum:       #8e3d6b;   /* research   */
+  --plum-wash:  #f8eaf2;
+
+  /* --- type --- */
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* --- rhythm --- */
+  --gut: clamp(20px, 5vw, 56px);
+  --maxw: 1180px;
+  --radius: 5px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 2px rgba(20,22,26,.05), 0 1px 1px rgba(20,22,26,.04);
+  --shadow-md: 0 14px 34px -18px rgba(20,22,26,.34), 0 2px 6px -2px rgba(20,22,26,.08);
+  --shadow-brand: 0 18px 40px -20px rgba(192,69,42,.55);
+
+  --ease: cubic-bezier(.2,.7,.3,1);
+  --ease-back: cubic-bezier(.34,1.42,.5,1);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg:        #12100e;
+  --bg-sunk:   #191614;
+  --bg-deep:   #211d19;
+  --surface:   #1c1917;
+
+  --ink:       #f4f0ea;
+  --ink-2:     #cbc5bc;
+  --muted:     #968f85;
+  --faint:     #6d6760;
+  --line:      #2e2a25;
+  --line-soft: #242019;
+
+  --brand:      #e0724f;
+  --brand-deep: #c0452a;
+  --brand-lift: #f09271;
+  --brand-wash: #2e1b14;
+
+  --ocean:      #4cb6c4;  --ocean-wash:  #10262a;
+  --indigo:     #9a94f5;  --indigo-wash: #1c1a33;
+  --gold:       #dcae51;  --gold-wash:   #2b2213;
+  --pine:       #62b895;  --pine-wash:   #132720;
+  --plum:       #d183ae;  --plum-wash:   #2a1622;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.45);
+  --shadow-md: 0 18px 44px -22px rgba(0,0,0,.85), 0 2px 8px -2px rgba(0,0,0,.45);
+  --shadow-brand: 0 18px 44px -20px rgba(224,114,79,.4);
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--brand) 45%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color .18s;
+}
+a:hover { text-decoration-color: var(--brand); }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1em; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+ul, ol { margin: 0; padding: 0; }
+button, input, textarea, select { font: inherit; color: inherit; }
+
+::selection { background: var(--brand); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* --- type scale ------------------------------------------------- */
+
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.02;
+}
+
+.t-xxl { font-size: clamp(2.5rem, 5.6vw, 4.3rem); }
+.t-xl  { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+.t-lg  { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.t-md  { font-size: clamp(1.12rem, 1.7vw, 1.3rem); }
+
+/* the one flourish: a gradient sweep on a single phrase per page */
+.grad {
+  background: linear-gradient(100deg, var(--brand) 0%, var(--plum) 38%, var(--indigo) 68%, var(--ocean) 100%);
+  background-size: 170% 100%;
+  background-position: 32% 50%;   /* reads as a real gradient even when paused */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: pan 14s ease-in-out infinite;
+}
+@keyframes pan {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1.55vw, 1.2rem);
+  line-height: 1.64;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: .75rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+
+/* --- small shared atoms ----------------------------------------- */
+
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  color: var(--muted);
+  background: var(--surface);
+  white-space: nowrap;
+  transition: border-color .18s, color .18s, transform .18s var(--ease);
+}
+.tag:hover { transform: translateY(-1px); }
+
+.tag--brand  { color: var(--brand);  border-color: color-mix(in srgb, var(--brand) 34%, var(--line));  background: var(--brand-wash); }
+.tag--pine   { color: var(--pine);   border-color: color-mix(in srgb, var(--pine) 34%, var(--line));   background: var(--pine-wash); }
+.tag--ocean  { color: var(--ocean);  border-color: color-mix(in srgb, var(--ocean) 34%, var(--line));  background: var(--ocean-wash); }
+.tag--indigo { color: var(--indigo); border-color: color-mix(in srgb, var(--indigo) 34%, var(--line)); background: var(--indigo-wash); }
+.tag--gold   { color: var(--gold);   border-color: color-mix(in srgb, var(--gold) 34%, var(--line));   background: var(--gold-wash); }
+
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pine); flex: none; }
+.dot--live { animation: ping 2.6s ease-out infinite; }
+
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--pine) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* --- motion vocabulary ------------------------------------------ */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(28px, -22px) scale(1.09); }
+  66%  { transform: translate(-20px, 18px) scale(.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes sheen { to { background-position: 200% 0; } }
+
+/* elements that animate in on page load, staggered by --d */
+.enter {
+  opacity: 0;
+  animation: rise .85s var(--ease) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .enter { opacity: 1; }
+}

@@ -1,0 +1,8 @@
+# keep the repo LF-normalised regardless of contributor platform
+* text=auto eol=lf
+
+# binary assets must never be line-ending converted
+*.png binary
+*.ico binary
+*.svg text eol=lf
+*.vcf text eol=crlf

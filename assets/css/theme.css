@@ -1,0 +1,643 @@
+/* ------------------------------------------------------------------
+   theme.css — colour, imagery and motion layer.
+   Loads after site.css. Everything here is additive, so the layout
+   sheet stays readable on its own.
+   ------------------------------------------------------------------ */
+
+/* =============== scroll progress ================================ */
+
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--brand), var(--plum), var(--indigo), var(--ocean));
+  z-index: 300;
+  will-change: transform;
+}
+
+/* =============== decorative gradient orbs ======================= */
+
+.blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(58px);
+  opacity: .58;
+  animation: drift 26s ease-in-out infinite;
+}
+:root[data-theme="dark"] .blob { opacity: .34; filter: blur(76px); }
+
+.blob--1 { width: 380px; height: 380px; top: -120px; right: -70px;  background: var(--brand); }
+.blob--2 { width: 300px; height: 300px; top: 170px;  right: 250px;  background: var(--gold);   animation-delay: -9s; }
+.blob--3 { width: 260px; height: 260px; top: 30px;   left: -130px;  background: var(--indigo); animation-delay: -17s; }
+
+.hero, .cb-hero { position: relative; }
+.hero > *, .cb-hero > * { position: relative; z-index: 1; }
+
+/* =============== brand imagery in the chrome ==================== */
+
+.brand__img { height: 26px; width: auto; flex: none; }
+.brand__ava {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 8%;
+  background: var(--brand-wash);
+  border: 1px solid var(--line);
+  flex: none;
+}
+.cb-logo__img { height: 34px; width: auto; }
+
+/* =============== hero portrait ================================== */
+
+.hero__grid--photo {
+  grid-template-columns: minmax(0, 1fr) minmax(310px, .96fr);
+  align-items: center;
+}
+@media (max-width: 900px) { .hero__grid--photo { grid-template-columns: 1fr; } }
+
+.portrait { position: relative; display: grid; place-items: center; padding: 10px 0; }
+
+.portrait__ring {
+  position: absolute;
+  inset: 1%;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--brand) 45%, transparent);
+  animation: spin-slow 46s linear infinite;
+}
+.portrait__img {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  filter: drop-shadow(0 22px 30px rgba(20,22,26,.22));
+  animation: floaty 7s ease-in-out infinite;
+}
+
+.portrait__chip {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  font-family: var(--mono);
+  font-size: .63rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.portrait__chip--a { left: -18px; top: 18%;    animation: floaty 6s ease-in-out infinite; }
+.portrait__chip--b { right: -18px; bottom: 20%; animation: floaty 6s ease-in-out -3s infinite; }
+@media (max-width: 620px) { .portrait__chip { display: none; } }
+
+/* =============== stats ========================================== */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.stat { background: var(--bg); padding: 22px 20px; --c: var(--brand); }
+.stat:nth-child(2) { --c: var(--ocean); }
+.stat:nth-child(3) { --c: var(--indigo); }
+.stat:nth-child(4) { --c: var(--gold); }
+.stat__n {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--c);
+}
+.stat__l {
+  font-family: var(--mono);
+  font-size: .63rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 9px;
+}
+
+/* =============== company logo marks ============================= */
+
+.logo { width: 22px; height: 22px; fill: currentColor; flex: none; }
+
+.logo-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.logo-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: transform .22s var(--ease-back), box-shadow .22s, border-color .22s, color .22s;
+}
+.logo-chip .logo { color: var(--c, var(--brand)); transition: color .25s, transform .25s var(--ease-back); }
+.logo-chip:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c, var(--brand)) 50%, var(--line));
+  box-shadow: 0 14px 28px -16px color-mix(in srgb, var(--c, var(--brand)) 70%, transparent);
+  color: var(--ink);
+}
+.logo-chip:hover .logo { transform: scale(1.14) rotate(-5deg); }
+
+/* certification card with the issuer's mark */
+.cert { gap: 14px; position: relative; overflow: hidden; }
+.cert::after {
+  content: "";
+  position: absolute;
+  inset: auto -30px -30px auto;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: var(--c, var(--brand));
+  opacity: 0;
+  filter: blur(26px);
+  transition: opacity .3s;
+}
+.cert:hover::after { opacity: .2; }
+.cert__logo {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  flex: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--c, var(--brand));
+  transition: transform .25s var(--ease-back), box-shadow .25s, border-color .25s;
+  position: relative;
+  z-index: 1;
+}
+.cert:hover .cert__logo {
+  transform: rotate(-7deg) scale(1.08);
+  border-color: color-mix(in srgb, var(--c, var(--brand)) 45%, var(--line));
+  box-shadow: 0 10px 20px -12px color-mix(in srgb, var(--c, var(--brand)) 80%, transparent);
+}
+.cert__logo .logo { width: 22px; height: 22px; }
+.cert > div { position: relative; z-index: 1; }
+.cert__name { font-size: .88rem; font-weight: 600; line-height: 1.35; }
+
+/* =============== per-product accents ============================ */
+
+.product { --c: var(--brand); position: relative; }
+.product--mail   { --c: var(--ocean); }
+.product--admin  { --c: var(--indigo); }
+.product--people { --c: var(--gold); }
+
+.product::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--c);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--ease);
+  z-index: 2;
+}
+.product:hover::before { transform: scaleX(1); }
+.product:hover {
+  border-color: color-mix(in srgb, var(--c) 45%, var(--line));
+  box-shadow: 0 20px 44px -24px color-mix(in srgb, var(--c) 70%, transparent), var(--shadow-md);
+}
+.product__icon {
+  background: color-mix(in srgb, var(--c) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--c) 28%, var(--line));
+  color: var(--c);
+  transition: transform .3s var(--ease-back);
+}
+.product:hover .product__icon { transform: rotate(-8deg) scale(1.09); }
+
+/* =============== lifecycle + module accents ===================== */
+
+.stage:nth-child(6n+1) { --c: var(--brand); }
+.stage:nth-child(6n+2) { --c: var(--gold); }
+.stage:nth-child(6n+3) { --c: var(--pine); }
+.stage:nth-child(6n+4) { --c: var(--ocean); }
+.stage:nth-child(6n+5) { --c: var(--indigo); }
+.stage:nth-child(6n+6) { --c: var(--plum); }
+.stage::after { background: var(--c); }
+.stage__n { color: var(--c); opacity: .9; }
+
+.mod { --c: var(--brand); }
+.mod:nth-child(5n+2) { --c: var(--ocean); }
+.mod:nth-child(5n+3) { --c: var(--indigo); }
+.mod:nth-child(5n+4) { --c: var(--pine); }
+.mod:nth-child(5n+5) { --c: var(--gold); }
+.mod__top svg { color: var(--c); transition: transform .3s var(--ease-back); }
+.mod:hover .mod__top svg { transform: scale(1.2) rotate(-7deg); }
+.mod:hover { box-shadow: inset 3px 0 0 var(--c); }
+
+.now-card { --c: var(--brand); position: relative; overflow: hidden; }
+.now-card:nth-child(2) { --c: var(--ocean); }
+.now-card:nth-child(3) { --c: var(--plum); }
+.now-card__k { color: var(--c); }
+.now-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -40px -40px auto;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: var(--c);
+  opacity: 0;
+  filter: blur(34px);
+  transition: opacity .35s;
+}
+.now-card:hover::after { opacity: .18; }
+
+.cap { --c: var(--brand); }
+.cap:nth-child(6n+2) { --c: var(--ocean); }
+.cap:nth-child(6n+3) { --c: var(--indigo); }
+.cap:nth-child(6n+4) { --c: var(--pine); }
+.cap:nth-child(6n+5) { --c: var(--gold); }
+.cap:nth-child(6n+6) { --c: var(--plum); }
+.cap h3 { border-bottom-color: color-mix(in srgb, var(--c) 40%, var(--line)); }
+.cap h3 i { color: var(--c); }
+
+.spec { --c: var(--brand); }
+.spec:nth-child(4n+2) { --c: var(--ocean); }
+.spec:nth-child(4n+3) { --c: var(--indigo); }
+.spec:nth-child(4n+4) { --c: var(--gold); }
+.spec__k { color: var(--c); }
+
+.thread { --c: var(--brand); }
+.thread:nth-child(2) { --c: var(--plum); }
+.thread:nth-child(3) { --c: var(--indigo); }
+.thread__n { color: var(--c); }
+
+.role__org { color: var(--brand); }
+
+/* =============== buttons ======================================== */
+
+.btn--brand { box-shadow: var(--shadow-brand); position: relative; overflow: hidden; }
+.btn--brand > * { position: relative; z-index: 1; }
+.btn--brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.34) 50%, transparent 80%);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+}
+.btn--brand:hover::after { animation: sheen .9s var(--ease) forwards; }
+
+/* =============== washed sections ================================ */
+
+.section--wash {
+  background:
+    radial-gradient(900px 340px at 12% 0%, var(--brand-wash), transparent 70%),
+    radial-gradient(760px 300px at 88% 100%, var(--indigo-wash), transparent 70%),
+    var(--bg);
+  border-block: 1px solid var(--line);
+}
+
+.band {
+  background:
+    radial-gradient(520px 220px at 86% 16%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 70%),
+    var(--surface);
+  border-color: color-mix(in srgb, var(--brand) 26%, var(--line));
+}
+.band::after { background: radial-gradient(circle, color-mix(in srgb, var(--brand) 28%, transparent), transparent 70%); }
+
+/* =============== diagram draw-in ================================ */
+
+.draw [data-draw] { stroke-dasharray: 1400; stroke-dashoffset: 1400; }
+.draw.is-in [data-draw] { animation: draw 2s var(--ease) forwards; }
+.draw.is-in [data-draw]:nth-of-type(2n) { animation-delay: .18s; }
+.draw.is-in [data-draw]:nth-of-type(3n) { animation-delay: .34s; }
+
+/* =============== misc ============================================ */
+
+.js .reveal { transform: translateY(16px) scale(.996); }
+.js .reveal.is-in { transform: none; }
+
+.ticker {
+  background: linear-gradient(90deg, var(--brand-wash), var(--gold-wash), var(--ocean-wash), var(--indigo-wash), var(--brand-wash));
+  background-size: 300% 100%;
+  animation: pan 24s ease-in-out infinite;
+  border-block-color: var(--line);
+}
+.ticker__item { color: var(--ink-2); font-weight: 500; letter-spacing: .04em; }
+.ticker__item .logo { width: 18px; height: 18px; color: var(--c, var(--brand)); }
+
+.site-foot { background: var(--bg-sunk); }
+
+.hero h1 em { font-style: normal; }
+
+/* Near-black brand marks need lifting in dark mode or they vanish. */
+:root[data-theme="dark"] [data-brand="kafka"] { --c: #c9ced6; }
+
+
+/* Portrait sits on a light disc, so keep its drop shadow softer in dark. */
+:root[data-theme="dark"] .portrait__img { filter: drop-shadow(0 22px 30px rgba(0,0,0,.5)); }
+
+/* ==================================================================
+   carousel — native scroll-snap, buttons just drive scrollLeft
+   ================================================================== */
+
+.carousel { position: relative; }
+
+.carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel__viewport::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { .carousel__viewport { scroll-behavior: auto; } }
+
+.carousel__track {
+  display: flex;
+  gap: 18px;
+  padding: 4px 2px 6px 0;
+  width: max-content;
+}
+.carousel__item {
+  flex: 0 0 clamp(268px, 78vw, 330px);
+  scroll-snap-align: start;
+}
+
+.carousel__bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.carousel__dots { display: flex; gap: 7px; flex-wrap: wrap; }
+.carousel__dot {
+  width: 7px; height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 100px;
+  background: var(--line);
+  cursor: pointer;
+  transition: width .28s var(--ease), background .28s;
+}
+.carousel__dot[aria-current="true"] { width: 24px; background: var(--brand); }
+
+.carousel__arrows { display: flex; gap: 8px; margin-left: auto; }
+.carousel__btn {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: border-color .18s, color .18s, transform .18s var(--ease), opacity .18s;
+}
+.carousel__btn:hover:not(:disabled) { border-color: var(--brand); color: var(--brand); transform: scale(1.06); }
+.carousel__btn:disabled { opacity: .32; cursor: default; }
+.carousel__btn svg { width: 16px; height: 16px; }
+
+.carousel__count {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  color: var(--faint);
+}
+
+/* ==================================================================
+   training tracks
+   ================================================================== */
+
+.track {
+  --c: var(--brand);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+  transition: transform .26s var(--ease), box-shadow .26s, border-color .26s;
+}
+.track:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c) 45%, var(--line));
+  box-shadow: 0 22px 46px -26px color-mix(in srgb, var(--c) 75%, transparent), var(--shadow-md);
+}
+
+.track__top {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--c) 7%, var(--surface));
+}
+.track__k {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c);
+  margin-bottom: 10px;
+}
+.track__k b { font-weight: 500; opacity: .55; }
+.track__top h3 { font-size: 1.05rem; font-weight: 650; letter-spacing: -.02em; }
+
+.track__body { padding: 16px 20px; flex: 1; }
+.track__body p { font-size: .85rem; color: var(--muted); line-height: 1.56; margin-bottom: 14px; }
+.track__mods { display: flex; flex-wrap: wrap; gap: 6px; }
+.track__mods span {
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .04em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  background: var(--bg);
+}
+
+.track__feet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.track__feet b { color: var(--c); font-weight: 500; }
+
+/* delivery facts under the carousel */
+.delivery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.delivery > div { background: var(--bg); padding: 20px; }
+.delivery dt {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 7px;
+}
+.delivery dd { margin: 0; font-size: .92rem; font-weight: 550; }
+
+/* ==================================================================
+   portrait scene — pipelines, packets, quantum orbits, AI nodes
+   Sits behind the cut-out; every layer is decorative and aria-hidden.
+   ================================================================== */
+
+.scene {
+  position: absolute;
+  inset: -8% -6%;
+  z-index: 0;
+  pointer-events: none;
+}
+.scene__svg { width: 100%; height: 100%; overflow: visible; }
+
+/* dashed rings read as data moving around the subject */
+.flow { fill: none; stroke-linecap: round; }
+.flow--a { stroke: var(--brand); stroke-width: 1.5; stroke-dasharray: 3 12; opacity: .8; animation: dashflow 7s linear infinite; }
+.flow--b { stroke: var(--ocean); stroke-width: 1.3; stroke-dasharray: 2 16; opacity: .65;  animation: dashflow 11s linear infinite reverse; }
+.flow--c { stroke: var(--gold);  stroke-width: 1.1; stroke-dasharray: 1 9;  opacity: .55;  animation: dashflow 15s linear infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -300; } }
+
+/* quantum shells */
+.shell {
+  fill: none;
+  stroke: var(--indigo);
+  stroke-width: 1.1;
+  opacity: .3;
+  animation: shellpulse 6s ease-in-out infinite;
+}
+.shell--2 { stroke: var(--plum); animation-delay: -2s; }
+.shell--3 { stroke: var(--ocean); animation-delay: -4s; }
+@keyframes shellpulse {
+  0%, 100% { opacity: .26; }
+  50%      { opacity: .55; }
+}
+.nucleus { fill: var(--brand); opacity: .85; animation: shellpulse 3.4s ease-in-out infinite; }
+
+/* packets travelling the pipelines (SMIL, so they follow the viewBox) */
+.pkt { opacity: .9; }
+
+/* orbiting technology nodes -------------------------------------- */
+
+/* radius = half the orbit box height; keep it near the photo edge so
+   nodes never wander into the text column beside the hero. */
+.orbit {
+  position: absolute;
+  inset: 11%;
+  animation: orbit var(--dur, 38s) linear infinite;
+}
+.orbit--wide { inset: 4%; }
+.orbit--rev  { animation-direction: reverse; }
+
+@keyframes orbit {
+  from { transform: rotate(var(--a, 0deg)); }
+  to   { transform: rotate(calc(var(--a, 0deg) + 360deg)); }
+}
+
+.node {
+  position: absolute;
+  left: 50%;
+  top: -21px;
+  width: 42px;
+  height: 42px;
+  margin-left: -21px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--c, var(--brand)) 34%, var(--line));
+  box-shadow: 0 10px 22px -12px color-mix(in srgb, var(--c, var(--brand)) 85%, transparent), var(--shadow-sm);
+  color: var(--c, var(--brand));
+  /* cancel the parent's spin so the glyph stays upright */
+  animation: counter var(--dur, 38s) linear infinite;
+}
+.orbit--rev .node { animation-direction: reverse; }
+
+@keyframes counter {
+  from { transform: rotate(calc(var(--a, 0deg) * -1)); }
+  to   { transform: rotate(calc((var(--a, 0deg) * -1) - 360deg)); }
+}
+
+.node svg { width: 20px; height: 20px; }
+.node::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--c, var(--brand)) 22%, transparent);
+  opacity: 0;
+  animation: nodehalo 4s ease-in-out infinite;
+}
+@keyframes nodehalo {
+  0%, 100% { opacity: 0; transform: scale(.9); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+
+/* the portrait itself has to stay above all of it */
+.portrait__img  { z-index: 2; }
+.portrait__chip { z-index: 4; }
+
+/* keep the scene from crowding the photo on narrow screens */
+@media (max-width: 900px) { .scene { inset: -4% -2%; } }
+@media (max-width: 620px) {
+  .orbit { display: none; }
+  .scene { inset: -4%; opacity: .75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pkt { display: none; }
+}
+
+/* --- carousel: touch-sized controls ------------------------------ */
+
+/* the dot stays 7px visually; the hit area is 40px via a transparent box */
+.carousel__dot { position: relative; }
+.carousel__dot::after {
+  content: "";
+  position: absolute;
+  inset: -17px -8px;
+}
+
+@media (max-width: 860px) {
+  .carousel__btn { width: 44px; height: 44px; }
+  .carousel__btn svg { width: 18px; height: 18px; }
+  .carousel__bar { gap: 10px; margin-top: 18px; }
+  .carousel__dots { gap: 10px; }
+}

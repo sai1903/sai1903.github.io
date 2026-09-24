@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Baratam Sai Surya Kiran</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fcf9f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12100e" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/theme.css">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var saved = localStorage.getItem('bssk-theme');
+      var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+<style>
+  body { min-height: 100svh; display: grid; place-items: center; padding: var(--gut); }
+  .nf { max-width: 560px; text-align: center; position: relative; }
+  .nf__code {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(5rem, 22vw, 9rem); line-height: 1; letter-spacing: -.05em;
+  }
+  .nf .row { justify-content: center; margin-top: 30px; }
+  /* full-bleed wash rather than a rectangle clipped to the text block */
+  .nf .blobs { position: fixed; inset: -10%; z-index: -1; }
+  .nf .blob { opacity: .34; }
+  :root[data-theme="dark"] .nf .blob { opacity: .24; }
+</style>
+</head>
+<body>
+
+<main class="nf">
+  <div class="blobs" aria-hidden="true">
+    <span class="blob blob--1"></span><span class="blob blob--3"></span>
+  </div>
+  <p class="hero__eyebrow" style="justify-content:center">Error 404</p>
+  <p class="nf__code grad">404</p>
+  <h1 class="display t-lg" style="margin:14px 0 12px">That page moved, or never existed</h1>
+  <p class="lede" style="margin-inline:auto">
+    The link may be out of date. Everything on this site is reachable from the homepage.
+  </p>
+  <div class="row">
+    <a class="btn btn--brand" href="/"><span>Go to the homepage</span></a>
+    <a class="btn btn--ghost" href="/services.html">Services</a>
+    <a class="btn btn--ghost" href="/card.html">Contact card</a>
+  </div>
+</main>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

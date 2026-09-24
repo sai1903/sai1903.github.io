@@ -1,0 +1,74 @@
+{
+ "aws": {
+  "label": "AWS",
+  "color": "#FF9900"
+ },
+ "databricks": {
+  "label": "Databricks",
+  "color": "#FF3621"
+ },
+ "snowflake": {
+  "label": "Snowflake",
+  "color": "#29B5E8"
+ },
+ "salesforce": {
+  "label": "Salesforce",
+  "color": "#00A1E0"
+ },
+ "claude": {
+  "label": "Claude",
+  "color": "#D97757"
+ },
+ "anthropic": {
+  "label": "Anthropic",
+  "color": "#191919"
+ },
+ "python": {
+  "label": "Python",
+  "color": "#3776AB"
+ },
+ "spark": {
+  "label": "Apache Spark",
+  "color": "#E25A1C"
+ },
+ "kafka": {
+  "label": "Apache Kafka",
+  "color": "#231F20"
+ },
+ "dbt": {
+  "label": "dbt",
+  "color": "#FF694B"
+ },
+ "airflow": {
+  "label": "Airflow",
+  "color": "#017CEE"
+ },
+ "terraform": {
+  "label": "Terraform",
+  "color": "#844FBA"
+ },
+ "kubernetes": {
+  "label": "Kubernetes",
+  "color": "#326CE5"
+ },
+ "postgres": {
+  "label": "PostgreSQL",
+  "color": "#4169E1"
+ },
+ "go": {
+  "label": "Go",
+  "color": "#00ADD8"
+ },
+ "react": {
+  "label": "React",
+  "color": "#61DAFB"
+ },
+ "typescript": {
+  "label": "TypeScript",
+  "color": "#3178C6"
+ },
+ "docker": {
+  "label": "Docker",
+  "color": "#2496ED"
+ }
+}

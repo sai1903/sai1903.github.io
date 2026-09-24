@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commbricks People — HRMS from first interview to final settlement</title>
+<meta name="description" content="Commbricks People is a 12-module HRMS: talent pool, interviews and F2F panels, offer letters, onboarding, payroll, leave, learning, performance reviews, offboarding and analytics.">
+<meta name="theme-color" content="#fcf9f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12100e" media="(prefers-color-scheme: dark)">
+
+<meta property="og:image" content="https://sai1903.github.io/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sai1903.github.io/hrms.html">
+<meta property="og:url" content="https://sai1903.github.io/hrms.html">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/commbricks-mark-512.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/theme.css">
+
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var saved = localStorage.getItem('bssk-theme');
+      var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap site-head__in">
+    <a class="brand" href="index.html">
+      <img class="brand__ava" src="assets/6vgicdie_surya-professional.png" alt="" width="32" height="32" loading="lazy" decoding="async">
+      <span class="brand__name">Baratam Sai Surya Kiran<small>AI &amp; Data Engineering</small></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html#work">Work</a>
+      <a href="services.html">Services</a>
+      <a href="index.html#research">Research</a>
+      <a href="commbricks.html">Commbricks</a>
+      <a href="hrms.html" aria-current="page">HRMS</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="head-tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ hero ============ -->
+  <section class="hero wrap">
+    <div class="blobs" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--2"></span><span class="blob blob--3"></span></div>
+
+    <div class="hero__grid">
+      <div>
+        <p class="hero__eyebrow"><span class="dot" aria-hidden="true"></span> Commbricks People &mdash; HRMS</p>
+
+        <h1 class="display t-xxl">
+          One employee record,<br>from first CV to <em class="grad">final settlement</em>.
+        </h1>
+
+        <p class="lede" style="margin-top:24px">
+          Most HR suites are four acquisitions in a trench coat: the ATS does not know the
+          payroll, and onboarding is a checklist someone maintains in a spreadsheet.
+          People is built on a single event-sourced record, so a promotion, a transfer or a
+          resignation is one write that everything else reacts to.
+        </p>
+
+        <div class="hero__sig">
+          <a class="btn" href="#modules">See all 12 modules</a>
+          <a class="btn btn--ghost" href="commbricks.html">&larr; Back to the suite</a>
+        </div>
+      </div>
+
+      <aside class="card-meta" aria-label="HRMS at a glance">
+        <dl>
+          <div class="card-meta__row"><dt>Modules</dt><dd>12</dd></div>
+          <div class="card-meta__row"><dt>Record</dt><dd>Event-sourced</dd></div>
+          <div class="card-meta__row"><dt>Payroll</dt><dd>Multi-entity</dd></div>
+          <div class="card-meta__row"><dt>Statutory</dt><dd>PF · ESI · PT · TDS</dd></div>
+          <div class="card-meta__row"><dt>Signing</dt><dd>E-sign built in</dd></div>
+          <div class="card-meta__row"><dt>Exports</dt><dd>CSV · Parquet · API</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ lifecycle ============ -->
+  <section class="section wrap" id="lifecycle">
+    <div class="sec-head">
+      <span class="sec-head__num">01</span>
+      <h2 class="sec-head__title">The lifecycle it covers</h2>
+      <span class="sec-head__note">Left to right, no gaps</span>
+    </div>
+
+    <div class="lifecycle">
+      <article class="stage"><span class="stage__n">01</span><h3>Source</h3><p>Talent pool, referrals, job posts and a searchable history of everyone you have ever spoken to.</p></article>
+      <article class="stage"><span class="stage__n">02</span><h3>Interview</h3><p>Screens, take-homes, F2F panels and scorecards that close before the debrief, not after.</p></article>
+      <article class="stage"><span class="stage__n">03</span><h3>Offer</h3><p>Approval chain, generated letter, e-signature, and the candidate record becomes an employee.</p></article>
+      <article class="stage"><span class="stage__n">04</span><h3>Onboard</h3><p>Accounts, device, documents, buddy and the first-week plan triggered off the join date.</p></article>
+      <article class="stage"><span class="stage__n">05</span><h3>Grow</h3><p>Goals, reviews, learning paths, compensation changes and internal moves on one timeline.</p></article>
+      <article class="stage"><span class="stage__n">06</span><h3>Offboard</h3><p>Notice, clearance, knowledge handover, full &amp; final settlement, access revoked everywhere.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ deep dive tabs ============ -->
+  <section class="section section--sunk" id="deepdive">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-head__num">02</span>
+        <h2 class="sec-head__title">Four places it earns its money</h2>
+        <span class="sec-head__note">Pick a stage</span>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="HRMS stages">
+        <button class="tab" role="tab" id="tab-hire" aria-controls="panel-hire" aria-selected="true" tabindex="0" type="button">Hiring &amp; interviews</button>
+        <button class="tab" role="tab" id="tab-offer" aria-controls="panel-offer" aria-selected="false" tabindex="-1" type="button">Offer &amp; onboarding</button>
+        <button class="tab" role="tab" id="tab-pay" aria-controls="panel-pay" aria-selected="false" tabindex="-1" type="button">Payroll &amp; compliance</button>
+        <button class="tab" role="tab" id="tab-grow" aria-controls="panel-grow" aria-selected="false" tabindex="-1" type="button">Reviews &amp; learning</button>
+      </div>
+
+      <!-- HIRE -->
+      <div class="panel" role="tabpanel" id="panel-hire" aria-labelledby="tab-hire" tabindex="0">
+        <div>
+          <h3>Panels that stop being a calendar problem</h3>
+          <p class="muted" style="font-size:.94rem">
+            The scheduler reads interviewer load, timezone and the panel composition rules you set —
+            no two juniors on a senior loop, no one doing four interviews in a day. Scorecards are
+            locked per interviewer until everyone submits, which kills the anchoring problem.
+          </p>
+          <ul class="panel__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Structured scorecards per role, versioned</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> F2F, virtual and panel rounds with room booking</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Blind-review mode for the first screen</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Talent pool that remembers the near-misses</li>
+          </ul>
+        </div>
+
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win">
+            <div class="mock__bar"><i></i><i></i><i></i><b>Panel — Sr. Data Engineer</b></div>
+            <div class="m-sched">
+              <div class="m-slot">
+                <span class="m-slot__t">10:00</span>
+                <span><b>Screen &mdash; fundamentals</b><i>45 min · virtual</i></span>
+                <span class="avatars"><b>PR</b><b>AK</b></span>
+              </div>
+              <div class="m-slot is-now">
+                <span class="m-slot__t">11:30</span>
+                <span><b>F2F &mdash; system design</b><i>60 min · Room 4B</i></span>
+                <span class="avatars"><b>SK</b><b>MF</b><b>DS</b></span>
+              </div>
+              <div class="m-slot">
+                <span class="m-slot__t">14:00</span>
+                <span><b>F2F &mdash; pipelines deep dive</b><i>60 min · Room 4B</i></span>
+                <span class="avatars"><b>KI</b><b>PR</b></span>
+              </div>
+              <div class="m-slot">
+                <span class="m-slot__t">15:30</span>
+                <span><b>Hiring manager + debrief</b><i>30 min · virtual</i></span>
+                <span class="avatars"><b>SK</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OFFER -->
+      <div class="panel" role="tabpanel" id="panel-offer" aria-labelledby="tab-offer" tabindex="0" hidden>
+        <div>
+          <h3>The offer letter generates itself</h3>
+          <p class="muted" style="font-size:.94rem">
+            Grade, location and entity decide the template. Finance approves the number, not the
+            wording. Once the candidate signs, the record flips to employee and onboarding starts
+            firing — accounts, device, documents and day-one plan, all keyed off the join date.
+          </p>
+          <ul class="panel__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Templated letters per entity, legal-approved once</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Approval chain with budget check before send</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> E-signature and counter-signature, stored with the record</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Background check and document collection tracked to completion</li>
+          </ul>
+        </div>
+
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win">
+            <div class="mock__bar"><i></i><i></i><i></i><b>offer-letter-A-Rao-v3.pdf</b></div>
+            <div class="m-offer">
+              <div class="m-offer__logo">
+                <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" style="color:var(--pine)">
+                  <rect x="2" y="2" width="13" height="13" rx="2" fill="currentColor"/>
+                  <rect x="17" y="2" width="13" height="13" rx="2" fill="currentColor" opacity=".35"/>
+                  <rect x="2" y="17" width="13" height="13" rx="2" fill="currentColor" opacity=".35"/>
+                  <rect x="17" y="17" width="13" height="13" rx="2" fill="currentColor"/>
+                </svg>
+                <b>Commbricks Technologies Pvt Ltd</b>
+              </div>
+              <h5>Letter of Appointment</h5>
+              <p>Dear Ananya, we are pleased to offer you the position described below, on the terms of the enclosed employment agreement.</p>
+              <div class="m-offer__fields">
+                <div class="m-offer__f"><span>Position</span><b>Sr. Data Engineer</b></div>
+                <div class="m-offer__f"><span>Grade</span><b>L5</b></div>
+                <div class="m-offer__f"><span>Annual CTC</span><b>&#8377;38,00,000</b></div>
+                <div class="m-offer__f"><span>Joining</span><b>12 Oct 2026</b></div>
+                <div class="m-offer__f"><span>Location</span><b>Hyderabad</b></div>
+                <div class="m-offer__f"><span>Reports to</span><b>S. Kiran</b></div>
+              </div>
+              <div class="m-offer__sign">
+                <span class="pill pill--ok">Signed 21 Sep</span>
+                <span class="m-offer__sig">A. Rao</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAY -->
+      <div class="panel" role="tabpanel" id="panel-pay" aria-labelledby="tab-pay" tabindex="0" hidden>
+        <div>
+          <h3>Payroll that an auditor can read</h3>
+          <p class="muted" style="font-size:.94rem">
+            Each run is immutable once approved. Corrections become arrears in the next cycle
+            rather than edits to a closed month, so the ledger and the payslips never disagree.
+            Statutory components are calculated per entity and filed on a schedule.
+          </p>
+          <ul class="panel__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> PF, ESI, professional tax and TDS per entity</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Proration, arrears, mid-month joins and exits handled</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Leave and attendance feed the run directly</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Full &amp; final settlement generated at offboarding</li>
+          </ul>
+        </div>
+
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win">
+            <div class="mock__bar"><i></i><i></i><i></i><b>Run 2026-09 — locked</b></div>
+            <table class="m-table">
+              <thead><tr><th>Component</th><th>Basis</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Gross earnings</td><td>248 staff</td><td>&#8377;52,40,100</td><td><span class="pill pill--ok">Computed</span></td></tr>
+                <tr><td>Provident fund</td><td>12% basic</td><td>&#8377;3,77,280</td><td><span class="pill pill--ok">Filed</span></td></tr>
+                <tr><td>TDS</td><td>Slab</td><td>&#8377;6,11,940</td><td><span class="pill pill--ok">Filed</span></td></tr>
+                <tr><td>Arrears (Aug)</td><td>4 staff</td><td>&#8377;68,400</td><td><span class="pill pill--warn">Carried</span></td></tr>
+                <tr><td><strong>Net payable</strong></td><td>&mdash;</td><td><strong>&#8377;41,82,480</strong></td><td><span class="pill pill--ok">Approved</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROW -->
+      <div class="panel" role="tabpanel" id="panel-grow" aria-labelledby="tab-grow" tabindex="0" hidden>
+        <div>
+          <h3>Reviews tied to what people actually did</h3>
+          <p class="muted" style="font-size:.94rem">
+            Goals set at the start of a cycle carry through to the review form, so nobody
+            reconstructs a year from memory the night before. Calibration happens on a grid
+            the whole management line can see, and compensation changes write straight to payroll.
+          </p>
+          <ul class="panel__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Self, manager, peer and skip-level inputs in one cycle</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Calibration grid with distribution warnings, not hard quotas</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Learning paths assigned from review outcomes</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Compliance training with expiry and re-assignment</li>
+          </ul>
+        </div>
+
+        <div class="mock" aria-hidden="true">
+          <div class="mock__win" style="margin-bottom:12px">
+            <div class="mock__bar"><i></i><i></i><i></i><b>Review cycle — H2 2026</b></div>
+            <div class="m-review">
+              <div class="m-review__row">
+                <header><b>Technical depth</b><span>Exceeds</span></header>
+                <div class="meter"><i style="width:86%"></i></div>
+              </div>
+              <div class="m-review__row">
+                <header><b>Delivery &amp; ownership</b><span>Meets</span></header>
+                <div class="meter"><i style="width:68%"></i></div>
+              </div>
+              <div class="m-review__row">
+                <header><b>Collaboration</b><span>Exceeds</span></header>
+                <div class="meter meter--pine"><i style="width:91%"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock__win">
+            <div class="mock__bar"><i></i><i></i><i></i><b>Assigned learning</b></div>
+            <div class="m-learn">
+              <div class="m-course">
+                <span class="m-course__ico">SEC</span>
+                <span><b>Secure SDLC</b><i>Mandatory · expires yearly</i></span>
+                <span class="ring">100%</span>
+              </div>
+              <div class="m-course">
+                <span class="m-course__ico">SD</span>
+                <span><b>Distributed systems design</b><i>Path · 6 modules</i></span>
+                <span class="ring">60%</span>
+              </div>
+              <div class="m-course">
+                <span class="m-course__ico">MGR</span>
+                <span><b>First-time manager</b><i>Recommended</i></span>
+                <span class="ring">15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ modules ============ -->
+  <section class="section wrap" id="modules">
+    <div class="sec-head">
+      <span class="sec-head__num">03</span>
+      <h2 class="sec-head__title">All twelve modules</h2>
+      <span class="sec-head__note">Turn on what you need</span>
+    </div>
+
+    <div class="mod-grid">
+
+      <article class="mod reveal" data-reveal-index="0">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <h3>Talent pool</h3>
+        </div>
+        <p>Every candidate you have ever sourced, tagged and searchable years later.</p>
+        <ul><li>Referrals &amp; job posts</li><li>Silver-medallist tracking</li><li>Consent &amp; data expiry</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="1">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 9h16M9 9v10"/></svg>
+          <h3>Recruitment (ATS)</h3>
+        </div>
+        <p>Requisitions, pipeline stages and approvals, with headcount checked at source.</p>
+        <ul><li>Requisition approvals</li><li>Stage automation</li><li>Source-of-hire reporting</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="2">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <h3>Interviews &amp; F2F</h3>
+        </div>
+        <p>Scheduling, panel rules, room booking and scorecards that lock until everyone submits.</p>
+        <ul><li>Load-aware scheduling</li><li>Panel composition rules</li><li>Structured debriefs</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="3">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 14h6"/></svg>
+          <h3>Offer management</h3>
+        </div>
+        <p>Generated letters, approval chain, e-signature and the flip from candidate to employee.</p>
+        <ul><li>Per-entity templates</li><li>Budget check on approval</li><li>Counter-signature &amp; storage</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="4">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+          <h3>Onboarding</h3>
+        </div>
+        <p>Accounts, device, documents, buddy and a first-week plan, all triggered by the join date.</p>
+        <ul><li>Task templates per role</li><li>Document collection</li><li>Day-one account provisioning</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="5">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+          <h3>Core HR</h3>
+        </div>
+        <p>The employee record itself — positions, reporting lines, entities and full history.</p>
+        <ul><li>Event-sourced changes</li><li>Org chart &amp; transfers</li><li>Document vault</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="6">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
+          <h3>Time &amp; leave</h3>
+        </div>
+        <p>Policies per entity, accruals, holiday calendars and approvals that reach payroll.</p>
+        <ul><li>Accrual &amp; carry-forward rules</li><li>Regional holiday calendars</li><li>Attendance &amp; shifts</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="7">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M7 12h.01M17 12h.01"/></svg>
+          <h3>Payroll</h3>
+        </div>
+        <p>Immutable runs, statutory components, arrears and payslips people can actually read.</p>
+        <ul><li>PF · ESI · PT · TDS</li><li>Multi-entity, multi-currency</li><li>Bank file generation</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="8">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V7M10 19V4M16 19v-8M22 19H2"/></svg>
+          <h3>Performance</h3>
+        </div>
+        <p>Goals, 360 inputs, calibration and compensation changes that write back to payroll.</p>
+        <ul><li>Goal &amp; OKR tracking</li><li>Calibration grid</li><li>Promotion &amp; comp workflow</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="9">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 10v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5"/></svg>
+          <h3>Learning</h3>
+        </div>
+        <p>Paths, mandatory compliance training with expiry, and external course reimbursement.</p>
+        <ul><li>Assignable learning paths</li><li>Certification expiry tracking</li><li>Budget &amp; reimbursement</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="10">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4a2 2 0 012 2v12a2 2 0 01-2 2h-4"/><path d="M10 16l-4-4 4-4M6 12h9"/></svg>
+          <h3>Offboarding</h3>
+        </div>
+        <p>Notice period, clearance, handover, settlement and access revoked across the whole suite.</p>
+        <ul><li>Clearance checklist by department</li><li>Full &amp; final settlement</li><li>Exit interview &amp; rehire flag</li></ul>
+      </article>
+
+      <article class="mod reveal" data-reveal-index="11">
+        <div class="mod__top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-9-9v9h9z"/></svg>
+          <h3>People analytics</h3>
+        </div>
+        <p>Headcount, attrition, cost-to-hire, pay bands and diversity reporting on live data.</p>
+        <ul><li>Attrition &amp; tenure cohorts</li><li>Pay-band and equity analysis</li><li>Warehouse export</li></ul>
+      </article>
+
+    </div>
+
+    <div class="strip">
+      <span class="tag tag--pine"><span class="dot" aria-hidden="true"></span> Role-based access throughout</span>
+      <span class="tag">Append-only audit log</span>
+      <span class="tag">Data residency: IN · EU · US</span>
+      <span class="tag">SSO &amp; SCIM</span>
+      <span class="tag">Bulk export, no lock-in</span>
+    </div>
+  </section>
+
+  <!-- ============ cta ============ -->
+  <section class="section section--sunk">
+    <div class="wrap">
+      <div class="band reveal">
+        <div>
+          <h2 class="display t-lg" style="margin-bottom:10px">Want to see it on your own org chart?</h2>
+          <p class="muted" style="font-size:.92rem;max-width:54ch">
+            Send over a sanitised headcount file and we&rsquo;ll run a walkthrough against your
+            structure rather than a demo tenant full of fake people.
+          </p>
+        </div>
+        <a class="btn btn--brand" href="mailto:saisuryakiranbaratam@gmail.com?subject=Commbricks%20People%20walkthrough">
+          Book a walkthrough
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__in">
+    <p>&copy; <span data-year>2026</span> Commbricks — a product by Baratam Sai Surya Kiran.</p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="index.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="card.html">Card</a>
+      <a href="commbricks.html">Suite</a>
+      <a href="mailto:saisuryakiranbaratam@gmail.com">Email</a>
+      <a href="#main">Back to top</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

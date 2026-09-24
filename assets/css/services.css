@@ -1,0 +1,339 @@
+/* ------------------------------------------------------------------
+   services.css — the 360° catalogue page.
+   Sits on top of base.css + site.css + theme.css.
+   ------------------------------------------------------------------ */
+
+/* =============== the four pillars =============================== */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+.pillar {
+  --c: var(--brand);
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: 24px 22px 26px;
+  overflow: hidden;
+  transition: transform .24s var(--ease), box-shadow .24s, border-color .24s;
+}
+.pillar:nth-child(2) { --c: var(--ocean); }
+.pillar:nth-child(3) { --c: var(--indigo); }
+.pillar:nth-child(4) { --c: var(--gold); }
+.pillar:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c) 45%, var(--line));
+  box-shadow: 0 22px 46px -26px color-mix(in srgb, var(--c) 75%, transparent), var(--shadow-md);
+}
+.pillar__n {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  color: var(--faint);
+}
+.pillar__ico {
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--c) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c) 30%, var(--line));
+  color: var(--c);
+  margin-bottom: 16px;
+  transition: transform .28s var(--ease-back);
+}
+.pillar:hover .pillar__ico { transform: rotate(-8deg) scale(1.08); }
+.pillar__ico svg { width: 21px; height: 21px; }
+.pillar h3 { font-size: 1.05rem; font-weight: 650; margin-bottom: 8px; }
+.pillar p { font-size: .87rem; color: var(--muted); line-height: 1.56; }
+.pillar ul { margin-top: 14px; }
+.pillar ul li {
+  list-style: none;
+  font-size: .8rem;
+  color: var(--ink-2);
+  padding: 4px 0 4px 14px;
+  position: relative;
+}
+.pillar ul li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .72em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+/* =============== audience cards ================================= */
+
+.aud-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.aud {
+  --c: var(--brand);
+  background: var(--bg);
+  padding: 24px 20px 26px;
+  transition: background .2s;
+}
+.aud:nth-child(2) { --c: var(--ocean); }
+.aud:nth-child(3) { --c: var(--indigo); }
+.aud:nth-child(4) { --c: var(--pine); }
+.aud:hover { background: var(--surface); }
+.aud__k {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--c);
+  margin-bottom: 12px;
+}
+.aud__k svg { width: 15px; height: 15px; }
+.aud h3 { font-size: 1rem; font-weight: 650; margin-bottom: 8px; }
+.aud p { font-size: .84rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+.aud dl { margin: 0; display: grid; gap: 7px; }
+.aud dl > div { display: flex; justify-content: space-between; gap: 12px; font-size: .76rem; }
+.aud dt { font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
+.aud dd { margin: 0; color: var(--ink-2); font-weight: 550; text-align: right; }
+
+/* =============== a training track =============================== */
+
+.track-list { display: grid; gap: 14px; }
+
+.trk {
+  --c: var(--brand);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color .22s, box-shadow .22s;
+}
+.trk:hover {
+  border-color: color-mix(in srgb, var(--c) 40%, var(--line));
+  box-shadow: 0 18px 40px -28px color-mix(in srgb, var(--c) 70%, transparent);
+}
+.trk--brand  { --c: var(--brand); }
+.trk--ocean  { --c: var(--ocean); }
+.trk--indigo { --c: var(--indigo); }
+.trk--pine   { --c: var(--pine); }
+.trk--gold   { --c: var(--gold); }
+.trk--plum   { --c: var(--plum); }
+
+.trk__head {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 15px;
+  align-items: start;
+  padding: 20px 22px 16px;
+  background: color-mix(in srgb, var(--c) 6%, var(--surface));
+  border-bottom: 1px solid var(--line-soft);
+}
+.trk__ico {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--c) 14%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--c) 32%, var(--line));
+  color: var(--c);
+}
+.trk__ico svg { width: 22px; height: 22px; }
+.trk__head h3 { font-size: 1.05rem; font-weight: 650; letter-spacing: -.02em; margin-bottom: 5px; }
+.trk__head p { font-size: .85rem; color: var(--muted); line-height: 1.55; max-width: 74ch; }
+
+.trk__mods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 14px 22px 0;
+}
+.trk__mods span {
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .04em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-2);
+}
+
+.trk__tools { padding: 14px 22px 20px; }
+.trk__cap {
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 11px;
+}
+
+/* =============== tool chips ===================================== */
+
+.tools { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.tchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: .76rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: transform .18s var(--ease-back), border-color .18s, box-shadow .18s, color .18s;
+}
+.tchip:hover {
+  transform: translateY(-2px);
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--tc) 55%, var(--line));
+  box-shadow: 0 8px 18px -10px color-mix(in srgb, var(--tc) 75%, transparent);
+}
+.tchip svg { width: 16px; height: 16px; fill: var(--tc); flex: none; }
+
+/* monogram tile for brands with no open logo available */
+.tchip__mono {
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  background: var(--tc);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: .44rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  flex: none;
+  font-style: normal;
+}
+
+/* =============== domain blocks ================================== */
+
+.dom__split {
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  gap: 22px;
+  padding: 16px 22px 20px;
+}
+@media (max-width: 720px) { .dom__split { grid-template-columns: 1fr; gap: 14px; } }
+
+.dom__mods li {
+  list-style: none;
+  font-size: .78rem;
+  color: var(--ink-2);
+  padding: 5px 0 5px 15px;
+  position: relative;
+  border-bottom: 1px dotted var(--line-soft);
+}
+.dom__mods li:last-child { border-bottom: 0; }
+.dom__mods li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .78em;
+  width: 6px; height: 1px;
+  background: var(--c);
+}
+
+/* =============== advisory / consulting lists ==================== */
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.offer {
+  --c: var(--brand);
+  background: var(--bg);
+  padding: 22px 20px;
+  transition: background .18s;
+}
+.offer:nth-child(3n+2) { --c: var(--ocean); }
+.offer:nth-child(3n+3) { --c: var(--indigo); }
+.offer:hover { background: var(--surface); box-shadow: inset 3px 0 0 var(--c); }
+.offer__ico { color: var(--c); margin-bottom: 12px; }
+.offer__ico svg { width: 20px; height: 20px; }
+.offer h3 { font-size: .95rem; font-weight: 650; margin-bottom: 7px; }
+.offer p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+/* =============== engagement table =============================== */
+
+.engage { width: 100%; border-collapse: collapse; font-size: .87rem; min-width: 640px; }
+.engage th, .engage td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: left;
+  vertical-align: top;
+}
+.engage thead th {
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 400;
+  border-bottom: 1px solid var(--line);
+}
+.engage tbody th { font-weight: 600; color: var(--ink); width: 26%; }
+.engage td { color: var(--ink-2); }
+
+/* =============== catalogue index (jump links) =================== */
+
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 26px;
+}
+.jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--surface);
+  font-size: .78rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink-2);
+  transition: border-color .18s, color .18s, transform .18s var(--ease);
+}
+.jump a:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
+.jump a svg { width: 14px; height: 14px; }
+
+/* Brand marks that are near-black (Express, Next.js, Vercel, GitHub ...) or
+   near-white would disappear against one of the two themes. The generator
+   emits a second, lightness-corrected value; swap to it in dark mode. */
+:root[data-theme="dark"] .tchip svg { fill: var(--tcd, var(--tc)); }
+:root[data-theme="dark"] .tchip__mono { background: var(--tcd, var(--tc)); }
+:root[data-theme="dark"] .tchip:hover {
+  border-color: color-mix(in srgb, var(--tcd, var(--tc)) 55%, var(--line));
+  box-shadow: 0 8px 18px -10px color-mix(in srgb, var(--tcd, var(--tc)) 75%, transparent);
+}
+
+/* --- mobile: the jump index is a primary navigation aid ---------- */
+@media (max-width: 860px) {
+  .jump a { padding: 10px 14px; min-height: 42px; }
+  .trk__head { grid-template-columns: 38px minmax(0, 1fr); gap: 12px; padding: 16px 16px 14px; }
+  .trk__ico { width: 38px; height: 38px; border-radius: 10px; }
+  .trk__ico svg { width: 19px; height: 19px; }
+  .trk__tools, .trk__mods { padding-left: 16px; padding-right: 16px; }
+  .dom__split { padding: 14px 16px 18px; }
+  .tchip { font-size: .74rem; padding: 7px 10px 7px 8px; }
+  .pillar, .aud, .offer { padding: 20px 18px 22px; }
+}

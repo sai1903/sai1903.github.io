@@ -1,0 +1,16 @@
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# local preview scratch
+__*.html
+__*.js
+*.log
+
+# python
+__pycache__/
+*.pyc
