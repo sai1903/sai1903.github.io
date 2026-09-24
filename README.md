@@ -1,5 +1,9 @@
 # Portfolio + Commbricks
 
+**Live:** https://sai1903.github.io
+
+Static site, no build step required to serve it. Deployed from `main` via GitHub Pages.
+
 Static site. No build step, no dependencies — open `index.html` or serve the folder.
 
 ```
@@ -26,6 +30,17 @@ assets/
   commbricks-mark-512.png            app icon
   favicon.ico
 ```
+
+## Deployment
+
+GitHub Pages serves `main` from the repository root. Pushing to `main` redeploys;
+the first build took about 25 seconds. `.nojekyll` is present so Pages serves the
+files as-is rather than running them through Jekyll.
+
+If the canonical domain ever changes, three things need updating: the `canonical`
+and `og:` tags in each page head, `sitemap.xml` / `robots.txt`, and the vCard —
+`python tools/make-vcard.py https://new-domain/card.html`. The QR needs nothing,
+since it is generated from `location.href` at runtime.
 
 ## Run locally
 
